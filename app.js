@@ -204,9 +204,7 @@ setInterval(() => {
 // TCP Server
 //=============================================//
 const server = net.createServer((sock) => {
-  const host = sock.remoteAddress;
-  const port = sock.remotePort;
-  const ip = `${host}:${port}`;
+  const ip = sock.remoteAddress;
   const now = Date.now();
 
   // Guard: Invalid or Banned IPs
@@ -312,8 +310,7 @@ const server = net.createServer((sock) => {
         const peers = Object.entries(peerRecord)
           .filter(([k]) => k !== ip)
           .map(([k, v]) => ({ ip: k, ...v.geo }))
-          // Commented out for development purposes
-          //.filter((v) => v.latitude && v.longitude);
+          .filter((v) => v.latitude && v.longitude);
 
         if (geo) {
           peers.sort((a, b) => distance(a, geo) - distance(b, geo));
