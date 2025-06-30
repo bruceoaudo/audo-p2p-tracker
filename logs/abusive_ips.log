@@ -1,0 +1,6 @@
+[2025-06-28T19:47:16.128Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET / HTTP"... is not valid JSON
+[2025-06-28T19:47:18.527Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET /favic"... is not valid JSON
+[2025-06-28T19:49:19.186Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET / HTTP"... is not valid JSON
+[2025-06-28T19:49:21.484Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET /favic"... is not valid JSON
+[2025-06-28T22:16:22.663Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET / HTTP"... is not valid JSON
+[2025-06-28T22:16:24.970Z] JSON parse error from 127.0.0.1: Unexpected token 'G', "GET /favic"... is not valid JSON
