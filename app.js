@@ -288,6 +288,7 @@ const server = net.createServer((sock) => {
       // Handle Client Actions
       //=================================//
       if (msg.action === "register") {
+        const peerPort = msg.port;
         let geo = (peerRecord[ip] && peerRecord[ip].geo) || (await getGeo(ip));
 
         if (geo) {
@@ -295,6 +296,7 @@ const server = net.createServer((sock) => {
             geo,
             firstSeen: now,
             lastSeen: now,
+            port: peerPort, // <-- Store port
           };
           appendLog(
             REQUEST_LOG,
@@ -310,7 +312,8 @@ const server = net.createServer((sock) => {
         const peers = Object.entries(peerRecord)
           // Just return all IPs including the connectin guser IPS (It will be the fisrt index)
           //.filter(([k]) => k !== ip)
-          .map(([k, v]) => ({ ip: k, ...v.geo }))
+          .map(([k, v]) => ({ ip: k, port: v.port, ...v.geo }))
+
           .filter((v) => v.latitude && v.longitude);
 
         if (geo) {
