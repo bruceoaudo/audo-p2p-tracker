@@ -308,7 +308,7 @@ const server = net.createServer((sock) => {
 
         // Build List of Nearby Peers
         const peers = Object.entries(peerRecord)
-        // Just return all IPs including the connectin guser IPS (It will be the fisrt index)
+          // Just return all IPs including the connectin guser IPS (It will be the fisrt index)
           //.filter(([k]) => k !== ip)
           .map(([k, v]) => ({ ip: k, ...v.geo }))
           .filter((v) => v.latitude && v.longitude);
@@ -320,6 +320,7 @@ const server = net.createServer((sock) => {
         const sendPeers = peers.slice(0, RESPONSE_PEER_LIMIT);
         sock.write(
           buildResponse(STATUS_CODES.SUCCESS_REGISTER, {
+            yourIP: ip, // <-- Client's own IP
             peers: sendPeers,
           })
         );
